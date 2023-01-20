@@ -14,5 +14,5 @@ When user clicks the pinned extension, there will be a popup showing...
   -Configuration for user preferences (e.g. - maximum time user can spend on a website
 
 BONUS Features:
-  -when user's time runs out on a given website, fetch quotes from a free public API
+  -when user's time runs out on a given website, fetch quotes from a free public API (possible free public API: https://zenquotes.io/)
   -user can download a CSV of all their previous logs

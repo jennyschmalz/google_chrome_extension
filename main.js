@@ -1,5 +1,4 @@
-//import { Timer } from './Timer.js';
-//console.log("This is a popup!");
+
 
 document.addEventListener('DOMContentLoaded', (e) => {
   let input = window.prompt('Please enter time in minutes for timer:');
@@ -17,7 +16,18 @@ document.addEventListener('DOMContentLoaded', (e) => {
   //const countdown = new Timer();
   const countdown = document.getElementById('countdown');
 
+
   const updateTimer = () => {
+    // if the time is at 0 : 00 end the timer
+    if (time == -1) {
+      fetch('https://inspirobot.me/api?generate=true', {
+      method: 'GET'
+    })
+    .then(response => response.text())
+    .then(data => console.log(data))
+    .catch(error => console.error(error))
+  }
+
     const minutes = Math.floor(time / 60);
     let seconds = time % 60;
 
@@ -27,6 +37,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
     time--;
   }
 
-  setInterval(updateTimer, 1000);
+ 
+    setInterval(updateTimer, 100)
+
 })
 
