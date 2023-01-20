@@ -1,4 +1,5 @@
-console.log("This is a popup!");
+//import { Timer } from './Timer.js';
+//console.log("This is a popup!");
 
 document.addEventListener('DOMContentLoaded', (e) => {
   let input = window.prompt('Please enter time in minutes for timer:');
@@ -8,11 +9,12 @@ document.addEventListener('DOMContentLoaded', (e) => {
     input = window.prompt('Please enter time in minutes for timer:');
   }
 
-  console.log(input);
+  //console.log(input);
 
   const startingMinutes = input;
   let time = startingMinutes * 60;
 
+  //const countdown = new Timer();
   const countdown = document.getElementById('countdown');
 
   const updateTimer = () => {
