@@ -25,18 +25,21 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
   const updateTimer = () => {
     // if the time is at 0 : 00 end the timer
-
-    let imgURL;
-
     if (time == -1) {
       fetch('https://type.fit/api/quotes', {
       method: 'GET'
     })
     .then(response => response.json())
     .then(data => {
-      quote = data[randomIndex(data)].text;
-      console.log(`data: ${quote}`);
-      quoteDiv.innerHTML = quote;
+      quoteObj = data[randomIndex(data)];
+      quote = quoteObj.text;
+      quoteAuthor = quoteObj.author || 'anonymous';
+      //quote = data[randomIndex(data)].text;
+      console.log(`data: ${quote} ${quoteAuthor}`);
+      // quoteDiv.innerHTML = `${quote} ${quoteAuthor}`;
+      quoteDiv.innerHTML = `"${quote}" 
+      
+      \n -${quoteAuthor}`;
       bodyDiv.remove();
       //let timer = document.querySelector('#content');
       //timer.style.display = 'none';
@@ -62,3 +65,11 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
 })
 
+// Attempt to reopen new tab
+// chrome.runtime.onInstalled.addListener((reason) => {
+//   if (reason === chrome.runtime.OnInstalledReason.INSTALL) {
+//     chrome.tabs.create({
+//       url: "index.html"
+//     });
+//   }
+// });
