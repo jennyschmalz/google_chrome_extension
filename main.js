@@ -31,9 +31,15 @@ document.addEventListener('DOMContentLoaded', (e) => {
     })
     .then(response => response.json())
     .then(data => {
-      const quote = data[randomIndex(data)].text;
-      console.log(`data: ${quote}`);
-      quoteDiv.innerHTML = quote;
+      quoteObj = data[randomIndex(data)];
+      quote = quoteObj.text;
+      quoteAuthor = quoteObj.author || 'anonymous';
+      //quote = data[randomIndex(data)].text;
+      console.log(`data: ${quote} ${quoteAuthor}`);
+      // quoteDiv.innerHTML = `${quote} ${quoteAuthor}`;
+      quoteDiv.innerHTML = `"${quote}" 
+      
+      \n -${quoteAuthor}`;
       bodyDiv.remove();
       //let timer = document.querySelector('#content');
       //timer.style.display = 'none';
@@ -59,3 +65,11 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
 })
 
+// Attempt to reopen new tab
+// chrome.runtime.onInstalled.addListener((reason) => {
+//   if (reason === chrome.runtime.OnInstalledReason.INSTALL) {
+//     chrome.tabs.create({
+//       url: "index.html"
+//     });
+//   }
+// });
