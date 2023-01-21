@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
   const countdown = document.getElementById('countdown');
   const bodyDiv = document.querySelector('#content');
   const quoteDiv = document.createElement('div');
-  quote.addClassName()
+  //quote.addClassName()
 
 
   const updateTimer = () => {
