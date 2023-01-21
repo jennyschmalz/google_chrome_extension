@@ -19,6 +19,10 @@ document.addEventListener('DOMContentLoaded', (e) => {
   const quoteDiv = document.querySelector('#quote');
   //quote.addClassName()
 
+  const randomIndex = (obj) => {
+    return Math.floor(Math.random() * Object.keys(obj).length);
+  }
+
 
   const updateTimer = () => {
     // if the time is at 0 : 00 end the timer
@@ -31,7 +35,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     })
     .then(response => response.json())
     .then(data => {
-      quote = data[0].text;
+      quote = data[randomIndex(data)].text;
       console.log(`data: ${quote}`);
       quoteDiv.innerHTML = quote;
       bodyDiv.remove();
