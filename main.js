@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', (e) => {
   const countdown = document.getElementById('countdown');
 
   const updateTimer = () => {
+
+    if (time === -1) return;
+
     const minutes = Math.floor(time / 60);
     let seconds = time % 60;
 
