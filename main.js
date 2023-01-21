@@ -25,16 +25,13 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
   const updateTimer = () => {
     // if the time is at 0 : 00 end the timer
-
-    let imgURL;
-
     if (time == -1) {
       fetch('https://type.fit/api/quotes', {
       method: 'GET'
     })
     .then(response => response.json())
     .then(data => {
-      quote = data[randomIndex(data)].text;
+      const quote = data[randomIndex(data)].text;
       console.log(`data: ${quote}`);
       quoteDiv.innerHTML = quote;
       bodyDiv.remove();
