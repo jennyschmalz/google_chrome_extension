@@ -15,17 +15,28 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
   //const countdown = new Timer();
   const countdown = document.getElementById('countdown');
+  const bodyDiv = document.querySelector('#content');
 
 
   const updateTimer = () => {
     // if the time is at 0 : 00 end the timer
+
+    let imgURL;
+
     if (time == -1) {
-      fetch('https://inspirobot.me/api?generate=true', {
+      fetch('https://type.fit/api/quotes', {
       method: 'GET'
     })
-    .then(response => response.text())
-    .then(data => console.log(data))
-    .catch(error => console.error(error))
+    .then(response => response.json())
+    .then(data => {
+      quote = data[0].text;
+      console.log(`data: ${quote}`);
+      countdown.innerHTML = quote;
+    })
+    .catch(error => console.error(error));
+    clearInterval(intervalID);
+
+    return;
   }
 
     const minutes = Math.floor(time / 60);
@@ -38,7 +49,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
   }
 
  
-    setInterval(updateTimer, 100)
+    const intervalID = setInterval(updateTimer, 1000);
 
 })
 
