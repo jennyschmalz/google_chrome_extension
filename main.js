@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
   //const countdown = new Timer();
   const countdown = document.getElementById('countdown');
   const bodyDiv = document.querySelector('#content');
-  const quoteDiv = document.createElement('div');
-  quote.addClassName()
+  const quoteDiv = document.querySelector('#quote');
+  //quote.addClassName()
 
 
   const updateTimer = () => {
@@ -34,7 +34,10 @@ document.addEventListener('DOMContentLoaded', (e) => {
       quote = data[0].text;
       console.log(`data: ${quote}`);
       quoteDiv.innerHTML = quote;
-      bodyDiv.append(quoteDiv);
+      bodyDiv.remove();
+      //let timer = document.querySelector('#content');
+      //timer.style.display = 'none';
+      document.body.append(quoteDiv);
     })
     .catch(error => console.error(error));
     clearInterval(intervalID);
@@ -52,7 +55,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
   }
 
  
-    const intervalID = setInterval(updateTimer, 500);
+    const intervalID = setInterval(updateTimer, 100);
 
 })
 
